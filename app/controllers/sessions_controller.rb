@@ -1,15 +1,16 @@
 class SessionsController < ApplicationController
 
     def new
-        session[:name] = params[:name]
     end
 
     def create
         return redirect_to login_path if !params[:name] || params[:name].blank?
         session[:name] = params[:name]
+        redirect_to root_path
     end
 
     def destroy
         session[:name] = nil
+        redirect_to root_path
     end
 end
